@@ -1,14 +1,46 @@
+<%
+    String currentAdminSection = (String) request.getAttribute("adminSection");
+    if (currentAdminSection == null) {
+        currentAdminSection = "";
+    }
+    String currentAdminUser = (String) session.getAttribute("adminUsername");
+    if (currentAdminUser == null || currentAdminUser.isBlank()) {
+        currentAdminUser = "Admin";
+    }
+%>
 <header class="admin-site-header">
-<div class="admin-site-header-inner">
-<a class="admin-site-logo" href="${pageContext.request.contextPath}/admin">Travel<span>Tourism</span></a>
-<span class="admin-area-label">ADMIN</span>
-<nav aria-label="Admin sections">
-<a href="${pageContext.request.contextPath}/admin" <%= request.getAttribute("adminSection").equals("overview") ? "aria-current=\"page\"" : "" %>>Overview</a>
-<a href="${pageContext.request.contextPath}/admin/homepage" <%= request.getAttribute("adminSection").equals("homepage") ? "aria-current=\"page\"" : "" %>>Homepage</a>
-<a href="${pageContext.request.contextPath}/admin/tours" <%= request.getAttribute("adminSection").equals("tours") ? "aria-current=\"page\"" : "" %>>Destinations</a>
-<a href="${pageContext.request.contextPath}/admin/bookings" <%= request.getAttribute("adminSection").equals("bookings") ? "aria-current=\"page\"" : "" %>>Bookings</a>
-<a href="${pageContext.request.contextPath}/admin/enquiries" <%= request.getAttribute("adminSection").equals("enquiries") ? "aria-current=\"page\"" : "" %>>Enquiries</a>
-<a href="${pageContext.request.contextPath}/admin/holidays" <%= request.getAttribute("adminSection").equals("holidays") ? "aria-current=\"page\"" : "" %>>Customized Holidays</a>
-</nav>
-<a class="admin-website-link" href="${pageContext.request.contextPath}/index.jsp" target="_blank" rel="noopener">View website &#8599;</a>
-</div></header>
+    <div class="admin-site-header-inner">
+        <div class="admin-brand-cluster">
+            <a class="admin-site-logo" href="${pageContext.request.contextPath}/admin">Travel<span>Tourism</span></a>
+            <span class="admin-area-label">ADMIN PANEL</span>
+        </div>
+
+        <nav class="admin-main-nav" aria-label="Admin sections">
+            <a href="${pageContext.request.contextPath}/admin" <%= "overview".equals(currentAdminSection) ? "class=\"active\" aria-current=\"page\"" : "" %>>Overview</a>
+            <a href="${pageContext.request.contextPath}/admin/homepage" <%= "homepage".equals(currentAdminSection) ? "class=\"active\" aria-current=\"page\"" : "" %>>Homepage</a>
+            <a href="${pageContext.request.contextPath}/admin/tours" <%= "tours".equals(currentAdminSection) ? "class=\"active\" aria-current=\"page\"" : "" %>>Destinations</a>
+            <a href="${pageContext.request.contextPath}/admin/bookings" <%= "bookings".equals(currentAdminSection) ? "class=\"active\" aria-current=\"page\"" : "" %>>Bookings</a>
+            <a href="${pageContext.request.contextPath}/admin/enquiries" <%= "enquiries".equals(currentAdminSection) ? "class=\"active\" aria-current=\"page\"" : "" %>>Enquiries</a>
+            <a href="${pageContext.request.contextPath}/admin/holidays" <%= "holidays".equals(currentAdminSection) ? "class=\"active\" aria-current=\"page\"" : "" %>>Customized Holidays</a>
+        </nav>
+
+        <div class="admin-user-cluster">
+            <a class="admin-website-link" href="${pageContext.request.contextPath}/index.jsp" target="_blank" rel="noopener" title="Open live public website">
+                <span>View website</span>
+                <span class="external-arrow">&#8599;</span>
+            </a>
+            <div class="admin-profile-pill" title="Logged in administrator">
+                <span class="admin-avatar-initial" aria-hidden="true"><%= currentAdminUser.length() > 0 ? currentAdminUser.substring(0, 1).toUpperCase() : "A" %></span>
+                <span class="admin-username"><%= currentAdminUser %></span>
+            </div>
+            <a class="admin-logout-btn" href="${pageContext.request.contextPath}/logout" title="Sign out of Admin Panel">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span>Log out</span>
+            </a>
+        </div>
+    </div>
+</header>

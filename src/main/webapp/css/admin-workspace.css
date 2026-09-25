@@ -1,174 +1,1183 @@
-/* Shared admin presentation. Public-page styles are intentionally independent. */
-:root{--admin-ink:#17332f;--admin-green:#176c57;--admin-muted:#647570;--admin-line:#dce5df;--admin-paper:#f5f6f1}
-*{box-sizing:border-box}
-.admin-topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px max(24px,calc((100vw - 1440px)/2));background:#153b32;color:white;border-bottom:1px solid #ffffff20}
-.admin-brand{color:white!important;text-decoration:none;font-size:15px;font-weight:800;letter-spacing:2px;white-space:nowrap}
-.admin-brand span{display:block;color:#b0c8bb;font-size:9px;letter-spacing:3px;margin-top:6px}
-.admin-topbar nav{display:flex;gap:8px;flex-wrap:wrap}
-.admin-topbar nav a{color:#d9e5df;text-decoration:none;padding:10px 15px;border-radius:8px;font-size:14px}
-.admin-topbar nav a:hover,.admin-topbar nav a[aria-current]{background:#ffffff17;color:white}
-.admin-intro{max-width:1440px;margin:auto;padding:42px 28px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.eyebrow{font-size:10px;letter-spacing:2px;font-weight:800;color:#537567}
-.admin-intro h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,42px);letter-spacing:-1px;margin:12px 0;color:var(--admin-ink)}
-.admin-intro p{color:var(--admin-muted);line-height:1.6;margin:0}
-.admin-metrics{display:flex;gap:36px}
-.admin-metrics strong{display:block;font-family:Georgia,serif;font-size:30px;font-weight:400}
-.admin-metrics span{display:block;font-size:12px;color:var(--admin-muted);margin-top:6px}
-body.holiday-admin,body.tour-admin{background:var(--admin-paper);color:var(--admin-ink);font-family:Segoe UI,Arial,sans-serif;margin:0}
-.holiday-layout{max-width:1440px;margin:auto;padding:0 28px 70px;display:grid;grid-template-columns:310px minmax(0,1fr);gap:28px;align-items:start}
-.holiday-admin .card{background:#fff;border:1px solid var(--admin-line);border-radius:16px;padding:26px;margin-bottom:22px;box-shadow:0 5px 20px #193c2d04}
-.holiday-catalog{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow:auto}
-.holiday-admin .holiday-catalog{padding:20px}
-.catalog-heading,.editor-title,.editor-save{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.catalog-heading h2{font-size:17px}
-.holiday-admin label{display:block;font-size:13px;font-weight:600;margin:16px 0 8px;line-height:1.5}
-.holiday-admin input,.holiday-admin textarea,.holiday-admin select{display:block;width:100%;padding:12px 13px;border:1px solid #d3ddd7;border-radius:8px;background:#fff;color:#243f36;font:inherit;font-size:14px;margin-top:7px}
-.holiday-admin textarea{resize:vertical;line-height:1.7;min-height:100px}
-.holiday-admin input[readonly]{background:#f3f5f2;color:#65796d}
-.holiday-admin :focus-visible,.tour-admin :focus-visible{outline:3px solid #89bca5;outline-offset:3px}
-.holiday-admin small{display:block;font-size:11px;color:var(--admin-muted);font-weight:400;margin-top:5px}
-.holiday-admin .button,.tour-admin .button{display:inline-flex;justify-content:center;align-items:center;gap:7px;padding:11px 18px;border:1px solid #cbd9d0;border-radius:8px;background:white;color:var(--admin-ink);text-decoration:none;cursor:pointer;font:600 13px Segoe UI,Arial,sans-serif;white-space:nowrap}
-.holiday-admin .button.primary,.tour-admin .button.primary,.tour-admin .button.success{background:var(--admin-green);color:white;border-color:var(--admin-green)}
-.holiday-admin .button:hover{filter:brightness(.95)}
-.holiday-item{display:block;color:#5f7268;text-decoration:none;border:1px solid transparent;border-bottom-color:#eaf0eb;border-radius:10px;padding:16px 12px;margin:3px 0;font-size:12px;line-height:1.6}
-.holiday-item:hover{background:#f5f8f3}
-.holiday-item.selected{background:#edf5ef;border-color:#b9d0bf}
-.holiday-item span{display:block}
-.holiday-item-title{font-size:14px;font-weight:650;color:var(--admin-ink);margin-bottom:5px}
-.pill{display:inline-block;font-size:9px;font-weight:600;padding:2px 7px;border-radius:20px;background:#e3ece5;color:#42604f;float:right}
-.holiday-item[hidden]{display:none}
-.holiday-admin .muted{color:var(--admin-muted);font-size:12px;line-height:1.6}
-.editor-title{margin:4px 0 26px}
-.editor-title h2{font-family:Georgia,serif;font-size:27px;font-weight:400;margin:9px 0 0;overflow-wrap:anywhere}
-.section-heading{display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid #e8eee8;padding-bottom:20px;margin-bottom:18px}
-.section-heading>span{font-size:11px;color:#547b61;background:#edf3eb;border-radius:50%;width:32px;height:32px;display:grid;place-items:center;flex-shrink:0}
-.section-heading h3{font-size:18px;margin:3px 0 8px;font-weight:650}
-.section-heading p{margin:0;color:var(--admin-muted);font-size:13px;line-height:1.6}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}
-.form-grid .full{grid-column:1/-1}
-.itinerary-day{border-left:2px solid #d9e5da;padding-left:18px;margin:20px 0}
-.day-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.day-toolbar label{margin:0}
-.day-toolbar button{background:#f2f5ef;border:1px solid #d8e1d6;padding:5px 10px;border-radius:5px;cursor:pointer;color:#3f604d}
-.day-toolbar button:disabled{opacity:.35;cursor:default}
-.editor-save{background:#fff;border:1px solid var(--admin-line);padding:18px 24px;border-radius:12px;position:sticky;bottom:12px;box-shadow:0 8px 30px #25463414}
-.editor-save p{font-size:12px;color:var(--admin-muted)}
-.admin-notice,.admin-error{padding:16px 20px;border-radius:10px;margin-bottom:20px;font-size:14px;line-height:1.6}
-.admin-notice{background:#e4f2e8;color:#275c3b;border:1px solid #b9d8c4}
-.admin-error{background:#fff0ed;color:#9a3329;border:1px solid #edc3bd}
-.tour-admin .header{background:transparent;border:0;box-shadow:none;color:var(--admin-ink)}
-.tour-admin .header-inner{max-width:1440px;padding:30px 28px;margin:auto}
-.tour-admin .header h1{font-family:Georgia,serif;font-weight:400;letter-spacing:-1px;color:var(--admin-ink)}
-.tour-admin .header p{color:var(--admin-muted)}
-.tour-admin .container{max-width:1440px}
-.tour-admin .card,.tour-admin .sidebar{border:1px solid var(--admin-line);box-shadow:0 5px 20px #193c2d04;border-radius:16px}
-.tour-admin .card-header{background:#f8faf6;border-bottom-color:var(--admin-line)}
-.tour-admin .tour-item.active{background:#edf5ef;border-color:#bbd3c0;color:var(--admin-ink)}
-.tour-admin .add-tour-btn{background:var(--admin-green);border-color:var(--admin-green)}
-.tour-admin input:focus,.tour-admin textarea:focus,.tour-admin select:focus{border-color:#82ae94;box-shadow:0 0 0 3px #edf5ef}
-@media(max-width:1000px){.holiday-layout{grid-template-columns:250px minmax(0,1fr);gap:18px}.admin-metrics{gap:20px}}
-@media(max-width:760px){.admin-topbar{align-items:flex-start;flex-direction:column;padding:20px}.admin-topbar nav{gap:2px}.admin-topbar nav a{padding:9px}.admin-intro{flex-direction:column;align-items:flex-start;padding:30px 20px}.holiday-layout{display:block;padding:0 16px 40px}.holiday-catalog{position:static;max-height:340px}.holiday-admin .card{padding:20px}.form-grid{grid-template-columns:1fr}.editor-title{flex-wrap:wrap}.editor-save{padding:12px;bottom:6px}.editor-save p{max-width:160px}.admin-metrics{gap:38px}}
+/* =====================================================
+   TRAVELTOUSIM - UNIFIED ADMIN WORKSPACE STYLESHEET
+   Professional, human-crafted design matching site tokens
+   ===================================================== */
 
-.holiday-photo-editor{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:24px;align-items:start}
-.holiday-photo-editor>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:12px;background:#eef2e8}
-.holiday-photo-editor form{margin-bottom:12px}
-.holiday-photo-editor .button{margin-top:14px}
-.holiday-photo-editor input[type=file]{padding:10px;font-size:12px}
-@media(max-width:1000px){.holiday-photo-editor{grid-template-columns:1fr}.holiday-photo-editor>img{max-width:440px}}
+:root {
+    --admin-navy: #173f5f;
+    --admin-navy-dark: #0f2a40;
+    --admin-navy-light: #20537d;
+    --admin-amber: #e88a3d;
+    --admin-amber-hover: #cf7226;
+    --admin-amber-soft: #fff7ed;
+    --admin-ink: #172b4d;
+    --admin-muted: #64748b;
+    --admin-line: #e2e8f0;
+    --admin-line-subtle: #edf2f7;
+    --admin-paper: #f8fafc;
+    --admin-white: #ffffff;
+    --admin-emerald: #059669;
+    --admin-emerald-soft: #ecfdf5;
+    --admin-danger: #dc2626;
+    --admin-danger-soft: #fef2f2;
+    --admin-radius: 14px;
+    --admin-radius-sm: 8px;
+    --admin-shadow: 0 4px 18px rgba(23, 63, 95, 0.05);
+    --admin-shadow-elevated: 0 12px 32px -6px rgba(23, 63, 95, 0.10), 0 2px 8px rgba(0, 0, 0, 0.03);
+}
 
-/* Admin navigation belongs to the main TravelTourism website. */
-.admin-site-header{background:#fff;border-bottom:1px solid #e8e9e5;box-shadow:0 2px 12px #173f5f05}
-.admin-site-header-inner{max-width:1440px;margin:auto;min-height:82px;padding:16px 28px;display:flex;align-items:center;gap:20px}
-.admin-site-logo{font-family:Segoe UI,Arial,sans-serif;font-size:24px;font-weight:750;letter-spacing:-.8px;text-decoration:none;color:#173f5f;white-space:nowrap}
-.admin-site-logo span{color:#e68b37}
-.admin-area-label{font-size:9px;letter-spacing:1.5px;color:#7e8a8f;border-left:1px solid #e2e6e7;padding-left:18px}
-.admin-site-header nav{display:flex;align-items:center;gap:8px;margin-left:auto}
-.admin-site-header nav a{text-decoration:none;font-size:13px;color:#4a555b;padding:11px 14px;border-radius:7px}
-.admin-site-header nav a:hover{background:#f7f7f3}
-.admin-site-header nav a[aria-current=page]{background:#fff3e7;color:#a95c19;font-weight:600}
-.admin-website-link{background:#e68b37;color:white;text-decoration:none;padding:11px 16px;border-radius:6px;font-size:12px;font-weight:600;white-space:nowrap}
-.tour-admin .destination-admin-intro{padding-top:38px;padding-bottom:34px}
-.tour-admin .container{padding:0 28px 60px;margin:0 auto}
-.tour-admin .dashboard{grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:start}
-.tour-admin .sidebar{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow:auto}
-.tour-admin .sidebar-header{padding:22px 20px 12px}
-.tour-admin .tour-list{padding:0 12px 12px;max-height:none}
-.tour-admin .tour-item{padding:14px 12px;margin:3px 0;border-radius:10px}
-.tour-admin .tour-name{font-size:13px;margin-bottom:5px}
-.tour-admin .tour-meta{font-size:11px;line-height:1.6}
-.tour-admin .tour-meta strong{font-weight:500}
-.tour-admin .workspace-header{background:transparent;box-shadow:none;border:0;padding:0;margin-bottom:24px}
-.tour-admin .workspace-title h2{font-family:Georgia,serif;font-weight:400;font-size:29px;color:#234b40}
-.tour-admin .workspace-title small{font-size:10px;letter-spacing:1.6px;color:#698072}
-.tour-admin .workspace-badge{background:#eaf0e6;color:#59725d;font-size:10px}
-.destination-editor-tabs{display:flex;gap:6px;background:#e9eee6;padding:6px;border-radius:12px;margin-bottom:20px;overflow:auto}
-.destination-editor-tabs button{flex:1;border:0;background:transparent;color:#64735f;border-radius:8px;padding:12px 15px;font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer}
-.destination-editor-tabs button[aria-selected=true]{background:#fff;color:#24533f;box-shadow:0 2px 8px #173b2410}
-.tour-admin .card[hidden]{display:none}
-.tour-admin .card{padding:28px;margin-bottom:24px}
-.tour-admin .card-header{display:flex;align-items:flex-start;justify-content:flex-start;gap:14px;padding:0 0 20px;margin:0 0 24px;background:transparent;border-bottom:1px solid #e6ece3}
-.tour-admin .card-header[data-step]:before{content:attr(data-step);display:grid;place-items:center;flex:0 0 32px;height:32px;border-radius:50%;color:#597b5a;background:#eff4eb;font-size:11px;margin-top:1px}
-.tour-admin .card-header h2{font-size:19px;font-weight:600;color:#243f34;margin:1px 0 7px}
-.tour-admin .card-header p{font-size:12px;line-height:1.6;color:#758173}
-.tour-admin label{font-size:12px;font-weight:600;color:#425345}
-.tour-admin input,.tour-admin select,.tour-admin textarea{border-color:#d8e1d4;border-radius:8px;padding:12px 13px;background:#fff;font-size:13px}
-.tour-admin textarea{line-height:1.7}
-.tour-admin .visibility-help{font-size:11px;line-height:1.65;color:#71816c;margin:8px 0 18px;max-width:560px}
-.tour-admin .danger-zone{background:transparent;border:0;border-top:1px solid #ece5df;border-radius:0;padding:18px 0 0;margin-top:28px}
-.destination-delete summary{color:#aa6453;font-size:12px;cursor:pointer;font-weight:600}
-.destination-delete h3{display:none}
-.destination-delete[open] summary{margin-bottom:16px}
-.tour-admin .image-card{border-radius:12px;border-color:#e1e7dc}
-.tour-admin .image-card img{aspect-ratio:3/2;object-fit:cover}
-@media(max-width:1000px){.admin-site-header-inner{gap:12px}.admin-area-label{display:none}.tour-admin .dashboard{grid-template-columns:250px minmax(0,1fr);gap:20px}.tour-admin .card{padding:22px}.tour-admin .workspace-header{flex-wrap:wrap}}
-@media(max-width:760px){.admin-site-header-inner{flex-wrap:wrap;padding:16px 20px;gap:14px}.admin-site-header nav{order:3;width:100%;margin:0;gap:4px}.admin-site-header nav a{flex:1;text-align:center;padding:10px 7px;font-size:12px}.admin-website-link{margin-left:auto}.admin-site-logo{font-size:22px}.tour-admin .container{padding:0 16px 40px}.tour-admin .dashboard{display:block}.tour-admin .sidebar{position:static;max-height:340px;margin-bottom:26px}.tour-admin .workspace-header{gap:14px}.tour-admin .workspace-title h2{font-size:26px}.tour-admin .card{padding:20px}.destination-editor-tabs button{padding:11px 12px;flex:0 0 auto}.tour-admin .row,.tour-admin .row-3{grid-template-columns:1fr}.tour-admin .table-wrapper{overflow:auto}}
+html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+}
 
-.tour-admin .tour-search input{padding-left:38px;padding-right:34px}
- .holiday-admin-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:24px}.holiday-admin-gallery figure{margin:0;padding:12px;border:1px solid #e1e7dc;border-radius:12px}.holiday-admin-gallery img{width:100%;height:140px;object-fit:cover;border-radius:8px}.holiday-admin-gallery figcaption{font-size:12px;color:#73806b;line-height:1.6;margin:10px 0;overflow-wrap:anywhere}
-.destination-photo-studio{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:30px;align-items:center;padding:4px 0 30px}
-.destination-cover-preview{position:relative;aspect-ratio:3/2;border-radius:16px;overflow:hidden;background:linear-gradient(145deg,#eef1e8,#dce6dc);border:1px solid #dce4d8}
-.destination-cover-preview>img{display:block;width:100%;height:100%;object-fit:cover}
-.destination-cover-preview>span{position:absolute;left:16px;top:16px;background:#fffdf3ed;color:#426149;border-radius:24px;padding:8px 13px;font-size:10px;font-weight:700;letter-spacing:.7px}
-.destination-cover-preview.is-empty{display:grid;place-items:center;padding:28px}
-#destination-cover-placeholder{display:flex;flex-direction:column;align-items:center;text-align:center;color:#536957;gap:10px}
-#destination-cover-placeholder b{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:#f8f5e6;color:#a0864d;font-size:23px}
-#destination-cover-placeholder strong{font-family:Georgia,serif;font-size:21px;font-weight:400}
-#destination-cover-placeholder small{color:#839080;font-size:11px}
-.destination-cover-controls h3,.destination-gallery-upload h3{font-family:Georgia,serif;font-size:23px;font-weight:400;color:#315240;margin:7px 0 11px}
-.destination-cover-controls>p,.destination-gallery-upload>div>p{font-size:12px;color:#7b8678;line-height:1.75;margin:0 0 20px}
-.photo-eyebrow{font-size:9px!important;letter-spacing:1.8px!important;color:#a07a4c!important;font-weight:700!important;margin:0!important}
-.destination-photo-form label{margin-top:0}
-.destination-photo-form input[type=file]{font-size:11px;padding:9px;background:#fafbf8}
-.destination-photo-form small{font-size:10px;line-height:1.6;color:#879181;display:block;margin:8px 0}
-.destination-photo-form .button{margin-top:14px}
-.destination-gallery-upload{display:grid;grid-template-columns:minmax(220px,.6fr) minmax(0,1.4fr);gap:30px;align-items:center;padding:28px 0;border-top:1px solid #e6ebe2}
-.destination-photo-form.inline{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:end}
-.destination-photo-form.inline label{grid-column:1}
-.destination-photo-form.inline input{grid-column:1}
-.destination-photo-form.inline button{grid-column:2;grid-row:2;margin:0}
-.tour-admin .image-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:17px;margin-top:22px}
-.tour-admin .image-card{position:relative;overflow:hidden;padding:0;background:#fff;box-shadow:none;transition:transform .2s,box-shadow .2s}
-.tour-admin .image-card:hover{transform:translateY(-2px);box-shadow:0 10px 25px #294f3912}
-.tour-admin .image-card>img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:0}
-.tour-admin .image-info{padding:14px}
-.tour-admin .image-info>strong{display:block;font-size:11px;color:#687568;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:10px}
-.tour-admin .cover{position:absolute;top:11px;left:11px;background:#fdf8e9e8;color:#5e714c;border:0;border-radius:25px;font-size:8px;letter-spacing:1px;padding:7px 10px}
-.tour-admin .image-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.tour-admin .image-actions form{margin:0}
-.tour-admin .image-actions .button{padding:8px 10px;font-size:10px}
-@media(max-width:900px){.destination-photo-studio,.destination-gallery-upload{grid-template-columns:1fr}.destination-cover-preview{max-width:620px}.destination-photo-form.inline{display:block}.destination-photo-form.inline button{margin-top:12px}}
-@media(max-width:600px){.destination-photo-studio{gap:22px}.tour-admin .image-grid{grid-template-columns:1fr 1fr;gap:10px}.tour-admin .image-info{padding:10px}.tour-admin .image-actions{display:grid}.tour-admin .image-actions .button{width:100%}}
+* {
+    box-sizing: border-box;
+}
 
-/* Homepage studio */
-body.homepage-admin{background:var(--admin-paper)}
-.homepage-admin-layout{max-width:1280px;margin:auto;padding:0 28px 70px}
-.homepage-admin .card{background:#fff;border:1px solid var(--admin-line);border-radius:16px;padding:28px;margin-bottom:24px;box-shadow:0 5px 20px #193c2d04}
-.homepage-form-section{padding:22px 0;border-top:1px solid #edf0eb}.homepage-form-section:first-of-type{border-top:0}
-.homepage-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.homepage-photo-card{display:grid;grid-template-columns:minmax(180px,.8fr) minmax(240px,1.2fr);border:1px solid #e2e8df;border-radius:14px;overflow:hidden;background:#fbfcf9}
-.homepage-photo-card>img{width:100%;height:100%;min-height:260px;object-fit:cover;background:#dfe8e1}
-.homepage-photo-copy{padding:22px}.homepage-photo-copy h3{font-family:Georgia,serif;font-weight:400;font-size:20px;margin:0 0 7px}.homepage-photo-copy p{font-size:11px;color:var(--admin-muted);margin:0 0 17px}
-.homepage-photo-copy form{margin:12px 0}.homepage-photo-copy input[type=file]{font-size:11px;padding:9px;background:white}.homepage-photo-copy .button{margin-top:9px}
-@media(max-width:1000px){.homepage-photo-grid{grid-template-columns:1fr}.homepage-photo-card>img{min-height:230px}}
-@media(max-width:650px){.homepage-admin-layout{padding:0 16px 40px}.homepage-admin .card{padding:20px}.homepage-photo-card{grid-template-columns:1fr}.homepage-photo-card>img{height:220px;min-height:0}.homepage-photo-copy{padding:18px}}
-@media(max-width:1100px) and (min-width:761px){.admin-site-header-inner{padding-inline:20px;gap:10px}.admin-site-header nav{gap:2px}.admin-site-header nav a{padding:10px 9px;font-size:11px}.admin-website-link{padding:10px 11px}}
+body {
+    overflow-x: clip;
+}
+
+body.holiday-admin,
+body.tour-admin,
+body.homepage-admin,
+body.admin-dashboard,
+body.enquiry-admin,
+body.booking-admin {
+    background: var(--admin-paper);
+    color: var(--admin-ink);
+    font-family: "Segoe UI", Arial, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =====================================================
+   01: GLOBAL ADMIN HEADER & NAVIGATION (ZERO OVERLAP)
+   ===================================================== */
+
+.admin-site-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid var(--admin-line) !important;
+    box-shadow: 0 2px 12px rgba(23, 63, 95, 0.06) !important;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+}
+
+.admin-site-header-inner {
+    max-width: 1480px;
+    margin: 0 auto;
+    min-height: 72px;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: nowrap;
+}
+
+.admin-brand-cluster {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.admin-site-logo {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 23px;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--admin-navy);
+    white-space: nowrap;
+}
+
+.admin-site-logo span {
+    color: var(--admin-amber);
+}
+
+.admin-area-label {
+    font-size: 9px;
+    letter-spacing: 1.6px;
+    font-weight: 800;
+    color: #475569;
+    background: #f1f5f9;
+    border: 1px solid var(--admin-line);
+    border-radius: 6px;
+    padding: 4px 8px;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+/* Navigation Links */
+.admin-main-nav {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1 1 auto;
+    justify-content: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 4px 0;
+}
+
+.admin-main-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-main-nav a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    padding: 8px 13px;
+    border-radius: 8px;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+
+.admin-main-nav a:hover {
+    color: var(--admin-navy);
+    background: #f1f5f9;
+}
+
+.admin-main-nav a[aria-current="page"],
+.admin-main-nav a.active {
+    background: var(--admin-navy);
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(23, 63, 95, 0.22);
+}
+
+/* User Cluster (Balanced, Zero Overlap) */
+.admin-user-cluster {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+}
+
+.admin-website-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: var(--admin-amber-soft) !important;
+    color: #b45309 !important;
+    border: 1px solid #fed7aa !important;
+    text-decoration: none !important;
+    padding: 7px 12px !important;
+    border-radius: 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    transition: all 0.18s ease !important;
+}
+
+.admin-website-link:hover {
+    background: var(--admin-amber) !important;
+    color: #ffffff !important;
+    border-color: var(--admin-amber) !important;
+}
+
+.admin-profile-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 5px 13px 5px 6px !important;
+    background: #f8fafc !important;
+    border: 1px solid var(--admin-line) !important;
+    border-radius: 24px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+.admin-avatar-initial {
+    width: 26px !important;
+    height: 26px !important;
+    border-radius: 50% !important;
+    background: var(--admin-navy) !important;
+    color: #ffffff !important;
+    display: grid !important;
+    place-items: center !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    flex-shrink: 0 !important;
+}
+
+.admin-username {
+    max-width: 140px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+.admin-logout-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 7px 13px !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--admin-line) !important;
+    background: #ffffff !important;
+    color: #64748b !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: all 0.18s ease !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}
+
+.admin-logout-btn svg {
+    flex-shrink: 0 !important;
+    stroke: currentColor !important;
+}
+
+.admin-logout-btn:hover {
+    background: var(--admin-danger-soft) !important;
+    color: var(--admin-danger) !important;
+    border-color: #fecaca !important;
+    transform: translateY(-1px) !important;
+}
+
+/* =====================================================
+   02: ADMIN INTRO BANNER & METRICS
+   ===================================================== */
+
+.admin-intro {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 38px 28px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    color: var(--admin-amber);
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.admin-intro h1 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(28px, 3vw, 40px);
+    letter-spacing: -0.8px;
+    margin: 8px 0 10px;
+    color: var(--admin-navy);
+}
+
+.admin-intro p {
+    color: var(--admin-muted);
+    line-height: 1.6;
+    font-size: 14px;
+    max-width: 580px;
+    margin: 0;
+}
+
+.admin-metrics {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.admin-metrics > div {
+    background: #ffffff;
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    padding: 14px 22px;
+    box-shadow: var(--admin-shadow);
+    min-width: 105px;
+    text-align: center;
+}
+
+.admin-metrics strong {
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--admin-navy);
+    line-height: 1.1;
+}
+
+.admin-metrics span {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--admin-muted);
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* =====================================================
+   03: CARDS, FORMS & COMMON CONTROLS
+   ===================================================== */
+
+.holiday-admin .card,
+.homepage-admin .card,
+.tour-admin .card {
+    background: #ffffff;
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: var(--admin-shadow);
+    transition: box-shadow 0.2s ease;
+}
+
+.catalog-heading,
+.editor-title,
+.editor-save {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.catalog-heading h2,
+.editor-title h2 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--admin-navy);
+    margin: 0;
+}
+
+/* Form inputs & controls */
+.holiday-admin label,
+.homepage-admin label,
+.tour-admin label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    margin: 16px 0 6px;
+    line-height: 1.5;
+}
+
+.holiday-admin input,
+.holiday-admin textarea,
+.holiday-admin select,
+.homepage-admin input,
+.homepage-admin textarea,
+.homepage-admin select,
+.tour-admin input,
+.tour-admin textarea,
+.tour-admin select {
+    display: block;
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: var(--admin-radius-sm);
+    background: #ffffff;
+    color: var(--admin-ink);
+    font: inherit;
+    font-size: 13.5px;
+    margin-top: 6px;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.holiday-admin textarea,
+.homepage-admin textarea,
+.tour-admin textarea {
+    resize: vertical;
+    line-height: 1.6;
+    min-height: 95px;
+}
+
+.holiday-admin input:focus,
+.holiday-admin textarea:focus,
+.holiday-admin select:focus,
+.homepage-admin input:focus,
+.homepage-admin textarea:focus,
+.homepage-admin select:focus,
+.tour-admin input:focus,
+.tour-admin textarea:focus,
+.tour-admin select:focus {
+    border-color: var(--admin-navy);
+    box-shadow: 0 0 0 3.5px rgba(23, 63, 95, 0.12);
+}
+
+.holiday-admin input[readonly] {
+    background: #f1f5f9;
+    color: #64748b;
+    border-color: #e2e8f0;
+}
+
+.holiday-admin small,
+.homepage-admin small,
+.tour-admin small {
+    display: block;
+    font-size: 11px;
+    color: var(--admin-muted);
+    font-weight: 400;
+    margin-top: 5px;
+    line-height: 1.5;
+}
+
+/* Buttons */
+.holiday-admin .button,
+.homepage-admin .button,
+.tour-admin .button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 18px;
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius-sm);
+    background: #ffffff;
+    color: var(--admin-ink);
+    text-decoration: none;
+    cursor: pointer;
+    font: 600 13px inherit;
+    white-space: nowrap;
+    transition: all 0.18s ease;
+}
+
+.holiday-admin .button:hover,
+.homepage-admin .button:hover,
+.tour-admin .button:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.holiday-admin .button.primary,
+.homepage-admin .button.primary,
+.tour-admin .button.primary {
+    background: var(--admin-navy);
+    color: #ffffff;
+    border-color: var(--admin-navy);
+    box-shadow: 0 2px 8px rgba(23, 63, 95, 0.18);
+}
+
+.holiday-admin .button.primary:hover,
+.homepage-admin .button.primary:hover,
+.tour-admin .button.primary:hover {
+    background: var(--admin-navy-dark);
+    box-shadow: 0 4px 14px rgba(23, 63, 95, 0.28);
+}
+
+/* Notice & Alerts */
+.admin-notice,
+.admin-error {
+    padding: 14px 20px;
+    border-radius: var(--admin-radius-sm);
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.admin-notice {
+    background: var(--admin-emerald-soft);
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.admin-error {
+    background: var(--admin-danger-soft);
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* Section Headings */
+.section-heading {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--admin-line);
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+}
+
+.section-heading > span {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--admin-amber);
+    background: var(--admin-amber-soft);
+    border: 1px solid #fed7aa;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+}
+
+.section-heading h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--admin-navy);
+    margin: 2px 0 4px;
+}
+
+.section-heading p {
+    margin: 0;
+    color: var(--admin-muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 20px;
+}
+
+.form-grid .full {
+    grid-column: 1 / -1;
+}
+
+/* Save Bar */
+.editor-save {
+    background: #ffffff;
+    border: 1px solid var(--admin-line);
+    padding: 16px 24px;
+    border-radius: var(--admin-radius);
+    position: sticky;
+    bottom: 16px;
+    box-shadow: var(--admin-shadow-elevated);
+    z-index: 90;
+    margin-top: 24px;
+}
+
+.editor-save p {
+    font-size: 12.5px;
+    color: var(--admin-muted);
+    margin: 0;
+}
+
+/* =====================================================
+   04: HOMEPAGE STUDIO SPECIFIC STYLES
+   ===================================================== */
+
+.homepage-admin-layout {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 28px 70px;
+}
+
+.homepage-form-section {
+    padding: 24px 0;
+    border-top: 1px solid var(--admin-line);
+}
+
+.homepage-form-section:first-of-type {
+    border-top: 0;
+}
+
+.homepage-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 20px;
+}
+
+.homepage-photo-card {
+    display: grid;
+    grid-template-columns: 210px minmax(0, 1fr);
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(23, 63, 95, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.homepage-photo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--admin-shadow-elevated);
+}
+
+.homepage-photo-card > img {
+    width: 100%;
+    height: 100%;
+    min-height: 230px;
+    object-fit: cover;
+    background: #e2e8f0;
+}
+
+.homepage-photo-copy {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.homepage-photo-copy h3 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--admin-navy);
+    margin: 0 0 6px;
+}
+
+.homepage-photo-copy p {
+    font-size: 12px;
+    color: var(--admin-muted);
+    margin: 0 0 16px;
+    line-height: 1.5;
+}
+
+.homepage-photo-copy form {
+    margin: 6px 0;
+}
+
+.homepage-photo-copy input[type="file"] {
+    font-size: 11.5px;
+    padding: 8px 10px;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 6px;
+}
+
+.homepage-photo-copy .button {
+    margin-top: 8px;
+    width: 100%;
+}
+
+/* =====================================================
+   05: CUSTOMIZED HOLIDAYS SPECIFIC STYLES
+   ===================================================== */
+
+.holiday-layout {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 28px 70px;
+    display: grid;
+    grid-template-columns: 330px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.holiday-catalog {
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.holiday-catalog label {
+    margin-top: 14px;
+}
+
+.holiday-catalog input[type="search"] {
+    margin-top: 4px;
+    padding: 10px 12px;
+    font-size: 13px;
+}
+
+#search-count {
+    font-size: 11px;
+    color: var(--admin-muted);
+    margin: 8px 0 12px;
+    font-weight: 600;
+}
+
+.holiday-item {
+    display: block;
+    color: #475569;
+    text-decoration: none;
+    border: 1px solid var(--admin-line);
+    border-radius: 10px;
+    padding: 14px 14px;
+    margin: 6px 0;
+    font-size: 12px;
+    line-height: 1.5;
+    background: #ffffff;
+    transition: all 0.18s ease;
+}
+
+.holiday-item:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateX(2px);
+}
+
+.holiday-item.selected {
+    background: var(--admin-amber-soft);
+    border-color: var(--admin-amber);
+    box-shadow: 0 2px 8px rgba(232, 138, 61, 0.15);
+}
+
+.holiday-item span {
+    display: block;
+}
+
+.holiday-item-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--admin-navy);
+    margin-bottom: 4px;
+}
+
+.pill {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: #f1f5f9;
+    color: #475569;
+    float: right;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.holiday-item.selected .pill {
+    background: var(--admin-amber);
+    color: #ffffff;
+}
+
+.holiday-photo-editor {
+    display: grid;
+    grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.holiday-photo-editor > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 12px;
+    background: #e2e8f0;
+    border: 1px solid var(--admin-line);
+}
+
+.holiday-photo-editor form {
+    margin-bottom: 12px;
+}
+
+.holiday-photo-editor input[type="file"] {
+    padding: 9px;
+    font-size: 12px;
+}
+
+.holiday-admin-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.holiday-admin-gallery figure {
+    margin: 0;
+    padding: 12px;
+    border: 1px solid var(--admin-line);
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.holiday-admin-gallery img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.holiday-admin-gallery figcaption {
+    font-size: 11.5px;
+    color: var(--admin-muted);
+    line-height: 1.5;
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+}
+
+/* Day-by-day Itinerary */
+.itinerary-day {
+    border-left: 3px solid var(--admin-amber);
+    padding-left: 18px;
+    margin: 20px 0;
+    background: #fafbfe;
+    padding: 16px 18px;
+    border-radius: 0 10px 10px 0;
+    border-top: 1px solid var(--admin-line);
+    border-right: 1px solid var(--admin-line);
+    border-bottom: 1px solid var(--admin-line);
+}
+
+.day-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.day-toolbar label {
+    margin: 0;
+    font-weight: 700;
+    color: var(--admin-navy);
+    font-size: 13px;
+}
+
+.day-toolbar button {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.15s ease;
+}
+
+.day-toolbar button:hover:not(:disabled) {
+    background: #f1f5f9;
+    color: var(--admin-navy);
+}
+
+.day-toolbar button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+/* =====================================================
+   06: DESTINATIONS MANAGEMENT SPECIFIC OVERRIDES
+   ===================================================== */
+
+.tour-admin .destination-admin-intro {
+    padding-top: 38px;
+    padding-bottom: 28px;
+}
+
+.tour-admin .container {
+    max-width: 1480px;
+    padding: 0 24px 60px;
+    margin: 0 auto;
+}
+
+.tour-admin .dashboard {
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.tour-admin .sidebar {
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    border: 1px solid var(--admin-line);
+    border-radius: var(--admin-radius);
+    background: #ffffff;
+    box-shadow: var(--admin-shadow);
+}
+
+.tour-admin .sidebar-header {
+    padding: 22px 20px 12px;
+}
+
+.tour-admin .tour-list {
+    padding: 0 12px 14px;
+    max-height: none;
+}
+
+.tour-admin .tour-item {
+    padding: 13px 14px;
+    margin: 4px 0;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.18s ease;
+}
+
+.tour-admin .tour-item:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.tour-admin .tour-item.active {
+    background: var(--admin-amber-soft);
+    border-color: var(--admin-amber);
+    color: var(--admin-navy);
+}
+
+.destination-editor-tabs {
+    display: flex;
+    gap: 6px;
+    background: #edf2f7;
+    padding: 6px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    overflow-x: auto;
+}
+
+.destination-editor-tabs button {
+    flex: 1;
+    border: 0;
+    background: transparent;
+    color: #475569;
+    border-radius: 8px;
+    padding: 11px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.destination-editor-tabs button:hover:not([aria-selected="true"]) {
+    color: var(--admin-navy);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.destination-editor-tabs button[aria-selected="true"] {
+    background: #ffffff;
+    color: var(--admin-navy);
+    box-shadow: 0 2px 8px rgba(23, 63, 95, 0.10);
+}
+
+.destination-photo-studio {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 28px;
+    align-items: center;
+    padding: 4px 0 28px;
+}
+
+.destination-cover-preview {
+    position: relative;
+    aspect-ratio: 3 / 2;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #edf2f7;
+    border: 1px solid var(--admin-line);
+}
+
+.destination-cover-preview > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destination-cover-preview > span {
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--admin-navy);
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.destination-cover-controls h3,
+.destination-gallery-upload h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--admin-navy);
+    margin: 6px 0 10px;
+}
+
+.destination-cover-controls > p,
+.destination-gallery-upload > div > p {
+    font-size: 12px;
+    color: var(--admin-muted);
+    line-height: 1.6;
+    margin: 0 0 18px;
+}
+
+.tour-admin .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.tour-admin .image-card {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    background: #ffffff;
+    border: 1px solid var(--admin-line);
+    border-radius: 12px;
+    box-shadow: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tour-admin .image-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--admin-shadow-elevated);
+}
+
+.tour-admin .image-card > img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+.tour-admin .image-info {
+    padding: 12px;
+}
+
+.tour-admin .image-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+.tour-admin .image-actions form {
+    margin: 0;
+}
+
+.tour-admin .image-actions .button {
+    padding: 6px 10px;
+    font-size: 11px;
+}
+
+/* =====================================================
+   07: RESPONSIVE BEHAVIOR (ZERO OVERLAP GUARANTEE)
+   ===================================================== */
+
+@media (max-width: 1280px) {
+    .admin-site-header-inner {
+        padding: 10px 18px;
+        gap: 12px;
+    }
+
+    .admin-area-label {
+        display: none;
+    }
+
+    .admin-main-nav a {
+        padding: 7px 10px;
+        font-size: 12.5px;
+    }
+
+    .admin-username {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 980px) {
+    .admin-site-header-inner {
+        flex-wrap: wrap;
+        padding: 10px 16px;
+        gap: 10px;
+    }
+
+    .admin-brand-cluster {
+        order: 1;
+    }
+
+    .admin-user-cluster {
+        order: 2;
+        margin-left: auto;
+    }
+
+    .admin-main-nav {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 4px 0 6px;
+        border-top: 1px solid var(--admin-line-subtle);
+    }
+
+    .admin-intro {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 28px 20px;
+    }
+
+    .holiday-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .holiday-catalog {
+        position: static;
+        max-height: 320px;
+    }
+
+    .homepage-photo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tour-admin .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .tour-admin .sidebar {
+        position: static;
+        max-height: 320px;
+        margin-bottom: 24px;
+    }
+
+    .destination-photo-studio {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .admin-website-link {
+        display: none;
+    }
+
+    .admin-profile-pill {
+        padding: 4px 10px 4px 4px;
+    }
+
+    .admin-username {
+        max-width: 80px;
+    }
+
+    .homepage-photo-card {
+        grid-template-columns: 1fr;
+    }
+
+    .homepage-photo-card > img {
+        min-height: 180px;
+        height: 180px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-save {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .editor-save .button {
+        width: 100%;
+    }
+}

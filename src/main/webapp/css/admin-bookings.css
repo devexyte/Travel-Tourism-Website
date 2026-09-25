@@ -1,1 +1,94 @@
-.booking-package-card{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:25px 20px;background:#f3f5ef;border-bottom:1px solid #e0e6dc}.booking-package-card h3{font:400 23px Georgia,serif;margin:7px 0;color:#294d46}.booking-package-card p{font-size:10px;color:#748079}.booking-package-card>strong{font:400 27px Georgia,serif;color:#a56332;text-align:right}.booking-package-card small{display:block;font:400 8px Segoe UI,sans-serif;color:#89938d;margin-top:5px;text-transform:uppercase;letter-spacing:1px}.booking-status-pending{background:#d67a3e!important}.booking-status-reviewing{background:#4b819a!important}.booking-status-confirmed{background:#4e9466!important}.booking-status-completed{background:#667b73!important}.booking-status-cancelled{background:#a35d56!important}.booking-admin code{display:block;font-size:9px;color:#809088;overflow-wrap:anywhere}.booking-admin .enquiry-detail-head>.enquiry-status{align-self:flex-start}@media(max-width:600px){.booking-package-card{align-items:flex-start;flex-direction:column}.booking-package-card>strong{text-align:left}}
+/* =====================================================
+   TRAVELTOUSIM - ADMIN BOOKING DESK STYLESHEET
+   Refined package snapshot and workflow controls
+   ===================================================== */
+
+.booking-package-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 24px 28px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin: 18px 0 24px;
+}
+
+.booking-package-card .eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 800;
+    color: #e88a3d;
+    margin-bottom: 4px;
+}
+
+.booking-package-card h3 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 4px 0 6px;
+    color: #173f5f;
+}
+
+.booking-package-card p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 0;
+}
+
+.booking-package-card > strong {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #173f5f;
+    text-align: right;
+    line-height: 1.1;
+}
+
+.booking-package-card small {
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Status Badges */
+.booking-status-pending { background: #d97706 !important; }
+.booking-status-reviewing { background: #0284c7 !important; }
+.booking-status-confirmed { background: #059669 !important; }
+.booking-status-completed { background: #475569 !important; }
+.booking-status-cancelled { background: #dc2626 !important; }
+
+.booking-admin code {
+    display: inline-block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 12px;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    margin-top: 4px;
+}
+
+.booking-admin .enquiry-detail-head > .enquiry-status {
+    align-self: flex-start;
+}
+
+@media (max-width: 650px) {
+    .booking-package-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .booking-package-card > strong {
+        text-align: left;
+    }
+}

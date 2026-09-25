@@ -71,19 +71,19 @@
             <h3>Contact Us</h3>
 
             <p>
-                📍 Mumbai, Maharashtra, India
+                Mumbai, Maharashtra, India
             </p>
 
             <p>
-                📞 +91 XXXXX XXXXX
+                +91 22 2654 8900
             </p>
 
             <p>
-                ✉ info@traveltourism.com
+                info@traveltourism.com
             </p>
 
             <a href="${pageContext.request.contextPath}/contact">
-                Contact Us →
+                Send an enquiry &rarr;
             </a>
 
         </div>

@@ -8,16 +8,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Create Account | Travel & Tourism</title>
+        <title>Create Account | TravelTourism</title>
 
-        <link rel="stylesheet"
-              href="${pageContext.request.contextPath}/css/login.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css?v=3">
 
     </head>
 
-    <body>
+    <body class="auth-body">
 
-        <div class="login-page">
+        <!-- COMMON SITE HEADER -->
+        <%@ include file="common/header.jsp" %>
+
+        <main class="login-page">
 
             <div class="login-card register-card">
 
@@ -185,13 +192,14 @@
                             Login
                         </a>
 
-                    </div>
-
                 </div>
 
             </div>
 
-        </div>
+        </main>
+
+        <!-- COMMON SITE FOOTER -->
+        <%@ include file="common/footer.jsp" %>
 
 
         <script>

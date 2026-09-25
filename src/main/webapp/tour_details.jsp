@@ -838,8 +838,18 @@
                             src="<c:out value='${details.mapEmbed}'/>"
                             title="Location map for <c:out value='${tour.name}'/>"
                             loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
                             allowfullscreen>
                         </iframe>
+
+                        <div class="journey-map-footer" style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="journey-muted" style="font-size: 13px;">
+                                Interactive destination map &amp; route exploration
+                            </span>
+                            <a href="<c:out value='${details.mapEmbed}'/>" target="_blank" rel="noopener noreferrer" class="journey-text-link" style="font-size: 13px; text-decoration: underline;">
+                                Open full map in new tab ↗
+                            </a>
+                        </div>
 
                     </c:when>
 

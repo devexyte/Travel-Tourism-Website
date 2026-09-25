@@ -16,8 +16,8 @@ long live = packages.stream().filter(p -> "1".equals(p.get("active")) && p.get("
 %>
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Customized holidays | Admin</title>
-<link rel="stylesheet" href="<%= context %>/css/admin-workspace.css">
+<title>Customized Holidays | TravelTourism Admin</title>
+<link rel="stylesheet" href="<%= context %>/css/admin-workspace.css?v=6">
 <script defer src="<%= context %>/js/admin-holidays.js"></script>
 </head><body class="holiday-admin">
 <% request.setAttribute("adminSection", "holidays"); %><%@ include file="/WEB-INF/admin/navigation.jspf" %>

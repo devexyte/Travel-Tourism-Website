@@ -138,6 +138,7 @@ public class AdminTourPanelServlet extends HttpServlet {
             // FORWARD TO JSP
             // =====================================================
 
+            request.setAttribute("adminSection", "tours");
             request.getRequestDispatcher(
                     "/admin/admin-tour-management.jsp"
             ).forward(request, response);
@@ -945,6 +946,11 @@ public class AdminTourPanelServlet extends HttpServlet {
                         "upgradesInfo",
                         "upgrades_info"
                 );
+
+        mapEmbed = sanitizeMapEmbed(
+                mapEmbed,
+                (citiesCovered != null && !citiesCovered.trim().isEmpty()) ? citiesCovered : statesCovered
+        );
 
         String checkSql =
                 "SELECT id FROM tour_details " +
@@ -2532,5 +2538,27 @@ public class AdminTourPanelServlet extends HttpServlet {
                         "adminMessage",
                         message
                 );
+    }
+
+    private static String sanitizeMapEmbed(String input, String locationFallback) {
+        if (input == null || input.trim().isEmpty()) {
+            if (locationFallback != null && !locationFallback.trim().isEmpty()) {
+                try {
+                    return "https://maps.google.com/maps?q=" + java.net.URLEncoder.encode(locationFallback.trim() + ",India", java.nio.charset.StandardCharsets.UTF_8) + "&t=&z=11&ie=UTF8&iwloc=&output=embed";
+                } catch (Exception ignored) {}
+            }
+            return null;
+        }
+        String clean = input.trim();
+        if (clean.contains("<iframe")) {
+            int srcIdx = clean.indexOf("src=\"");
+            if (srcIdx != -1) {
+                int endIdx = clean.indexOf("\"", srcIdx + 5);
+                if (endIdx != -1) {
+                    clean = clean.substring(srcIdx + 5, endIdx);
+                }
+            }
+        }
+        return clean;
     }
 }

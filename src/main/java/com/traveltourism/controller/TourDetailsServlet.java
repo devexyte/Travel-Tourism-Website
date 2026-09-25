@@ -3,6 +3,7 @@ package com.traveltourism.controller;
 import java.io.IOException;
 import com.traveltourism.model.Tour;
 import com.traveltourism.model.TourDataAccess;
+import com.traveltourism.model.TourDataAccess.TourPackageBundle;
 import com.traveltourism.model.TourDetails;
 import com.traveltourism.model.TourHotel;
 import com.traveltourism.model.TourItinerary;
@@ -35,23 +36,18 @@ public class TourDetailsServlet extends HttpServlet {
         }
 
         TourDataAccess dao = new TourDataAccess();
+        TourPackageBundle bundle = dao.getTourPackageBundle(id);
 
-        Tour tour = dao.getTourById(id);
-        if (tour == null) {
+        if (bundle == null || bundle.getTour() == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "Tour not found.");
             return;
         }
 
-        TourDetails details = dao.getTourDetailsById(id);
-        List<TourImages> images = dao.getTourImagesById(id);
-        List<TourItinerary> itinerary = dao.getItineraryByTourId(id);
-        List<TourHotel> hotels = dao.getHotelsByTourId(id);
-
-        request.setAttribute("tour", tour);
-        request.setAttribute("details", details);
-        request.setAttribute("images", images);
-        request.setAttribute("itinerary", itinerary);
-        request.setAttribute("hotels", hotels);
+        request.setAttribute("tour", bundle.getTour());
+        request.setAttribute("details", bundle.getDetails());
+        request.setAttribute("images", bundle.getImages());
+        request.setAttribute("itinerary", bundle.getItinerary());
+        request.setAttribute("hotels", bundle.getHotels());
 
         RequestDispatcher rd = request.getRequestDispatcher("/tour_details.jsp");
         rd.forward(request, response);

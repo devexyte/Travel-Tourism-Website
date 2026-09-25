@@ -47,7 +47,7 @@ private String esc(Object value) {
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="<%= esc( request.getContextPath() ) %>/css/admin-tour-management.css"><link rel="stylesheet" href="<%= esc( request.getContextPath() ) %>/css/admin-workspace.css">
+    <link rel="stylesheet" href="<%= esc( request.getContextPath() ) %>/css/admin-tour-management.css?v=6"><link rel="stylesheet" href="<%= esc( request.getContextPath() ) %>/css/admin-workspace.css?v=6">
 
 <script defer src="<%= esc(request.getContextPath()) %>/js/admin-destinations.js"></script></head>
 

@@ -25,5 +25,9 @@ Thumbs.db
 nb-configuration.xml
 src/main/webapp/META-INF/context.xml
 
+# Database credentials & secrets
+src/main/java/com/traveltourism/model/DBConnection.java
+
+
 # Java compiled files
 *.class

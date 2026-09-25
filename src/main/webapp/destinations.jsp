@@ -128,14 +128,14 @@
                     that feels like yours.
                 </p>
 
-                <a href="#journey-collection">
-
+                <a
+                    href="#journey-collection"
+                    class="collection-discover-link"
+                >
                     Discover the collection
-
                     <span aria-hidden="true">
                         ↓
                     </span>
-
                 </a>
 
             </div>
@@ -189,8 +189,6 @@
             </div>
 
         </section>
-
-
 
         <!-- ==========================================
              DESTINATION COLLECTION
@@ -873,7 +871,6 @@
 
 
             update();
-
         })();
 
     </script>
